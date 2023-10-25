@@ -11,27 +11,21 @@ const AnimalName = styled.strong`
   width: 5rem;
 `;
 
-export default function Counter({ animalName }) {
-  const [count, setCount] = useState(0);
+export default function Counter({ animal, onAdd, onSubtract }) {
+  const { id, name, count } = animal;
 
-  function handleAdd() {
-    setCount(count + 1);
-  }
-
-  function handleSubtract() {
-    setCount(Math.max(0, count - 1));
-  }
+  //const [count, setCount] = useState(0);
 
   return (
     <Container>
-      <AnimalName>{animalName}:</AnimalName>
-      <button type="button" onClick={() => handleSubtract()}>
+      <AnimalName>{name}:</AnimalName>
+      <button type="button" onClick={() => onSubtract(id)}>
         <span role="img" aria-label="Subtract one from count">
           ➖
         </span>
       </button>
       <span>{count}</span>
-      <button type="button" onClick={() => handleAdd()}>
+      <button type="button" onClick={() => onAdd(id)}>
         <span role="img" aria-label="Add one to count">
           ➕
         </span>
